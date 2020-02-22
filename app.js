@@ -87,7 +87,18 @@ app.put("/blogs/:id", function(req, res){
 			res.redirect("/blogs/" + req.params.id);
 		}
 	});
-})
+});
+
+// DELETE ROUTE
+app.delete("/blogs/:id", function(req, res){
+	Blog.findByIdAndDelete(req.params.id, function(err){
+		if(err){
+			res.redirect("/blogs");
+		}else{
+			res.redirect("/blogs");
+		}
+	});
+});
 
 app.listen(3000, function(){
 	console.log("Now serving the RESTful Blog App!");
